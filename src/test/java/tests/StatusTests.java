@@ -5,21 +5,15 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.hamcrest.Matchers.hasKey;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 
 public class StatusTests {
-    /*
-    1. Make request to https://selenoid.autotests.cloud/status
-    2. Get response { total: 5, used: 0, queued: 0, pending: 0, browsers: ...
-    3. Check total is 5
-     */
 
     @Test
     public void totalAmountTest() {
         get("https://selenoid.autotests.cloud/status")
                 .then()
-                .body("total", is(5));
+                .body("total", is(25));
     }
 
     @Test
@@ -27,7 +21,7 @@ public class StatusTests {
         get("https://selenoid.autotests.cloud/status")
                 .then()
                 .log().all()
-                .body("total", is(5));
+                .body("total", is(25));
     }
 
     @Test
@@ -41,7 +35,7 @@ public class StatusTests {
                 .get("https://selenoid.autotests.cloud/status")
                 .then()
                 .log().all()
-                .body("total", is(5));
+                .body("total", is(25));
     }
 
     @Test
@@ -91,8 +85,8 @@ public class StatusTests {
                 .then()
                 .log().all()
                 .statusCode(200)
-                .body("browsers.chrome", hasKey("127.0"))
-                .body("browsers.chrome", hasKey("128.0"));
+                .body("browsers.chrome", hasKey("154.0"))
+                .body("browsers.chrome", hasKey("155.0"));
     }
 
     @Test
@@ -117,6 +111,6 @@ public class StatusTests {
                 .log().all()
                 .statusCode(200)
                 .body(matchesJsonSchemaInClasspath("schemas/status_response_schema.json"))
-                .body("total", is(5));
+                .body("total", is(25));
     }
 }

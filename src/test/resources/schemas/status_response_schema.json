@@ -1,70 +1,153 @@
 {
-  "$schema": "http://json-schema.org/draft-06/schema#",
-  "$ref": "#/definitions/Welcome5",
-  "definitions": {
-    "Welcome5": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "total": {
-          "type": "integer"
-        },
-        "used": {
-          "type": "integer"
-        },
-        "queued": {
-          "type": "integer"
-        },
-        "pending": {
-          "type": "integer"
-        },
-        "browsers": {
-          "$ref": "#/definitions/Browsers"
-        }
-      },
-      "required": [
-        "browsers",
-        "pending",
-        "queued",
-        "total",
-        "used"
-      ],
-      "title": "Welcome5"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Generated Schema",
+  "type": "object",
+  "properties": {
+    "total": {
+      "type": "integer"
     },
-    "Browsers": {
+    "used": {
+      "type": "integer"
+    },
+    "queued": {
+      "type": "integer"
+    },
+    "pending": {
+      "type": "integer"
+    },
+    "warmReady": {
+      "type": "integer"
+    },
+    "warmTotal": {
+      "type": "integer"
+    },
+    "hotReady": {
+      "type": "integer"
+    },
+    "hotTotal": {
+      "type": "integer"
+    },
+    "warmSlots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "browser": {
+            "type": "string"
+          },
+          "protocol": {
+            "type": "string"
+          },
+          "pool": {
+            "type": "string"
+          },
+          "reservedBy": {}
+        },
+        "required": [
+          "id",
+          "browser",
+          "protocol",
+          "pool"
+        ]
+      }
+    },
+    "hotSlots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "browser": {
+            "type": "string"
+          },
+          "protocol": {
+            "type": "string"
+          },
+          "pool": {
+            "type": "string"
+          },
+          "reservedBy": {}
+        },
+        "required": [
+          "id",
+          "browser",
+          "protocol",
+          "pool"
+        ]
+      }
+    },
+    "browsers": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
+        "android": {
+          "type": "object",
+          "properties": {},
+          "required": [
+            "10.0",
+            "11.0",
+            "12.0",
+            "13.0",
+            "14.0",
+            "15.0",
+            "16.0",
+            "5.1"
+          ]
+        },
         "chrome": {
           "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/Chrome"
-          }
+          "properties": {},
+          "required": [
+            "148.0",
+            "154.0",
+            "155.0"
+          ]
         },
         "firefox": {
           "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/Chrome"
-          }
+          "properties": {},
+          "required": [
+            "157.0",
+            "157.0-min",
+            "158.0",
+            "158.0-min"
+          ]
         },
-        "opera": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/Chrome"
-          }
-        }
+        "msedge": {},
+        "playwright-chrome": {},
+        "playwright-chromium": {},
+        "playwright-firefox": {},
+        "playwright-msedge": {},
+        "playwright-webkit": {}
       },
       "required": [
+        "android",
         "chrome",
         "firefox",
-        "opera"
-      ],
-      "title": "Browsers"
-    },
-    "Chrome": {
-      "type": "object",
-      "additionalProperties": false,
-      "title": "Chrome"
+        "msedge",
+        "playwright-chrome",
+        "playwright-chromium",
+        "playwright-firefox",
+        "playwright-msedge",
+        "playwright-webkit"
+      ]
     }
-  }
+  },
+  "required": [
+    "total",
+    "used",
+    "queued",
+    "pending",
+    "warmReady",
+    "warmTotal",
+    "hotReady",
+    "hotTotal",
+    "warmSlots",
+    "hotSlots",
+    "browsers"
+  ]
 }

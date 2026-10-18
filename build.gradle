@@ -12,6 +12,7 @@ dependencies {
             "io.rest-assured:json-schema-validator:6.0.0",
             "org.junit.jupiter:junit-jupiter:5.14.3"
     )
+    testRuntimeOnly ('org.junit.platform:junit-platform-launcher')
 }
 
 tasks.withType(Test) {
