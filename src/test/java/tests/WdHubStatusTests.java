@@ -22,6 +22,20 @@ public class WdHubStatusTests extends TestBase {
     }
 
     @Test
+    public void badCredentialsTest() {
+        given()
+                .log().all()
+                .auth().basic("user1", "1111")
+                .when()
+//                .get("https://user1:1234@selenoid.qa.guru/wd/hub/status") //BAD PRACTICE
+                .get("https://selenoid.qa.guru/wd/hub/status")
+                .then()
+                .log().all()
+                .statusCode(401)
+                .body(containsString("Authorization Required"));
+    }
+
+    @Test
     public void unauthorizedStatusTest() {
         given()
                 .log().all()
@@ -29,7 +43,8 @@ public class WdHubStatusTests extends TestBase {
                 .get("/wd/hub/status")
                 .then()
                 .log().all()
-                .statusCode(401);
+                .statusCode(401)
+                .body(containsString("Authorization Required"));
     }
 
     @Test

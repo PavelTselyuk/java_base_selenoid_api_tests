@@ -50,17 +50,6 @@ public class StatusTests {
     }
 
     @Test
-    public void browserVersionTest() {
-        given()
-                .log().all()
-                .when()
-                .get("https://selenoid.autotests.cloud/status")
-                .then()
-                .log().all()
-                .statusCode(200);
-    }
-
-    @Test
     public void requiredKeysTest() {
         given()
                 .log().all()
@@ -85,7 +74,7 @@ public class StatusTests {
                 .then()
                 .log().all()
                 .statusCode(200)
-                .body("browsers.chrome", hasKey("154.0"))
+                .body("browsers.chrome", hasKey("156.0"))
                 .body("browsers.chrome", hasKey("155.0"));
     }
 
